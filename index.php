@@ -43,20 +43,20 @@ require_once("head-admin.php");
                     </thead>
                     <tbody>
                       <?php if(mysqli_num_rows($result) > 0){
-                                while($row = mysqli_fetch_assoc($result)):?>
-                        <tr>
-                          <td><?= $row['nomor']?></td>
-                          <td><?= $row['nama']?></td>
-                          <td><?= $row['tanggal_lahir']?></td>
-                          <td><?= $row['alamat']?></td>
-                          <td>
-                            <img src="upload/<?= $row['gambar'] ?>" alt="<?= $row['gambar'] ?>" class="gambar-table" width=100px; height="100px">
-                          </td>
-                          <td>
-                            <a href="edit.php?id=<?= $row['id'];?>"  class="btn btn-sm btn-primary">Edit</a>
-                            <a href="hapus.php?id=<?= $row['id']; ?>" class="btn btn-sm btn-danger">Hapus</a>
-                          </td>
-                        </tr>
+                            while($row = mysqli_fetch_assoc($result)):?>
+                                <tr>
+                                <td><?= $row['nomor']?></td>
+                                <td><?= $row['nama']?></td>
+                                <td><?= $row['tanggal_lahir']?></td>
+                                <td><?= $row['alamat']?></td>
+                                <td>
+                                    <img src="upload/<?= $row['gambar'] ?>" alt="<?= $row['gambar'] ?>" class="gambar-table" width=100px; height="100px">
+                                </td>
+                                <td>
+                                    <a href="edit.php?id=<?= $row['id'];?>"  class="btn btn-sm btn-primary">Edit</a>
+                                    <a href="hapus.php?id=<?= $row['id']; ?>" class="btn btn-sm btn-danger">Hapus</a>
+                                </td>
+                                </tr>
                         <?php endwhile;
                              }?>
                       </tbody>
