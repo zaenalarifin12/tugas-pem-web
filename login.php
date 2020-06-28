@@ -6,20 +6,23 @@ require_once('function/db.php');
 require_once('function/function.php');
 global $conn;
 
-
 if(isset($_POST['login'])){
     $nama       = $_POST['nama'];
     $password   = $_POST['password'];
-    if(!empty(trim($nama)) && !empty(trim($password))){
+    switch (true) {
+      case (!empty(trim($nama)) && !empty(trim($password))):
         $query = "SELECT nama FROM users WHERE password = '$password' AND nama = '$nama'";
-        if( mysqli_query($conn, $query)){
-            $_SESSION["nama"] = $nama;
-            header('Location: index.php');
-        }else{
-            echo "salah nama atau password";
-        }
-    }else{
+          if( mysqli_query($conn, $query)){
+              $_SESSION["nama"] = $nama;
+              header('Location: index.php');
+          }else{
+              echo "salah nama atau password";
+          }
+        break;
+      
+      default:
         echo 'data kosong';
+        break;
     }
 }
 
