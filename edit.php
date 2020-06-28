@@ -1,12 +1,16 @@
 
-<?php require_once("head-admin.php") ?>
+<?php 
+require_once("head-admin.php") ?>
 <?php 
 require_once('init/index.php');
 require_once('init/init.php');
 // ngambil data per id
 $id = $_GET['id'];
 $result = getPegawaiId($id);
+$row = mysqli_fetch_assoc($result);
+$jumlah = $result->num_rows;
 
+  
 if(isset($_POST['submit'])){
     $nomor            = $_POST['nomor'];
     $nama             = $_POST['nama'];
@@ -56,7 +60,7 @@ if(isset($_POST['submit'])){
                 </div>
                 <div class="card-body">
                   <form action="" method="post" enctype="multipart/form-data">
-                  <?php while($row = mysqli_fetch_assoc($result)): ?>
+                  <?php for($i = 0; $i < $jumlah; $i++){ ?>
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group">
@@ -99,7 +103,7 @@ if(isset($_POST['submit'])){
                           </div>
                         </div>
                     </div>
-                    <?php endwhile;?>
+                  <?php } ?>
                     <button type="submit" name="submit" class="btn btn-primary pull-right">Edit</button>
                     <div class="clearfix"></div>
                   </form>
